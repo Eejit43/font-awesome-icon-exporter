@@ -13,6 +13,7 @@ const argv = await yargs(hideBin(process.argv))
         ttf: { type: 'string', describe: 'The TTF file to load icons from', demandOption: true },
         outdir: { type: 'string', describe: 'The directory to output the file in', demandOption: true },
         icon: { type: 'string', describe: 'The icon to render', demandOption: true },
+        size: { type: 'number', describe: 'The icon size to render', default: 250 },
     })
     .version(false)
     .parse();
@@ -71,7 +72,7 @@ if (!foundIconCode) {
 
 registerFont(argv.ttf, { family: 'Font Awesome' });
 
-const iconSize = 250;
+const iconSize = argv.size;
 
 const canvas = createCanvas(iconSize, iconSize);
 const context = canvas.getContext('2d');
