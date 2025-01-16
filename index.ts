@@ -71,7 +71,7 @@ if (!foundIconCode) {
 
 registerFont(argv.ttf, { family: 'Font Awesome' });
 
-const iconSize = 200;
+const iconSize = 250;
 
 const canvas = createCanvas(iconSize, iconSize);
 const context = canvas.getContext('2d');
