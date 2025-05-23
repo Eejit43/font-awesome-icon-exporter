@@ -78,12 +78,20 @@ const canvas = createCanvas(iconSize, iconSize);
 const context = canvas.getContext('2d');
 
 context.font = `${iconSize}px "Font Awesome"`;
+context.textAlign = 'center';
+context.textBaseline = 'middle';
 
 const foundIconCodeString = String.fromCodePoint(Number.parseInt(foundIconCode, 16));
 
 const iconMeasurements = context.measureText(foundIconCodeString);
 
-context.fillText(foundIconCodeString, 0, iconMeasurements.actualBoundingBoxAscent);
+const scale = iconSize / Math.max(iconMeasurements.width, iconSize);
+
+context.scale(scale, scale);
+
+const padding = iconSize / 2 / scale;
+
+context.fillText(foundIconCodeString, padding, padding);
 
 const pngBuffer = canvas.toBuffer();
 
