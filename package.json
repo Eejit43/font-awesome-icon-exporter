@@ -13,7 +13,7 @@
     },
     "devDependencies": {
         "@eejit/eslint-config-typescript": "^14.4.0",
-        "@eejit/prettier-config": "^3.4.0",
+        "@eejit/prettier-config": "^3.5.0",
         "@types/css": "^0.0.38",
         "@types/yargs": "^17.0.33",
         "bun-types": "latest",
