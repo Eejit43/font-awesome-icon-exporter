@@ -85,7 +85,10 @@ const foundIconCodeString = String.fromCodePoint(Number.parseInt(foundIconCode, 
 
 const iconMeasurements = context.measureText(foundIconCodeString);
 
-const scale = iconSize / Math.max(iconMeasurements.width, iconSize);
+const width = iconMeasurements.actualBoundingBoxLeft + iconMeasurements.actualBoundingBoxRight;
+const height = iconMeasurements.actualBoundingBoxAscent + iconMeasurements.actualBoundingBoxDescent;
+
+const scale = iconSize / Math.max(width, height);
 
 context.scale(scale, scale);
 
