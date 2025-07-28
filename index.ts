@@ -58,7 +58,9 @@ for (const rule of parsedCss.stylesheet!.rules) {
         | undefined;
 
     if (iconCode) {
-        foundIconCode = iconCode.value?.replaceAll(/\\|"/g, '');
+        foundIconCode = iconCode
+            .value!.replaceAll(/^"|"$/g, '')
+            .replaceAll(/\\([\dA-Fa-f]{1,6})\s?/g, (fullMatch: string, hex: string) => String.fromCodePoint(Number.parseInt(hex, 16)));
 
         break;
     }
@@ -81,7 +83,7 @@ context.font = `${iconSize}px "Font Awesome"`;
 context.textAlign = 'center';
 context.textBaseline = 'middle';
 
-const foundIconCodeString = String.fromCodePoint(Number.parseInt(foundIconCode, 16));
+const foundIconCodeString = foundIconCode.startsWith('\\') ? foundIconCode.slice(1) : foundIconCode;
 
 const iconMeasurements = context.measureText(foundIconCodeString);
 
