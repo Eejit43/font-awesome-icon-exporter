@@ -49,7 +49,7 @@ let foundIconCode: string | undefined;
 for (const rule of parsedCss.stylesheet!.rules) {
     if (rule.type !== 'rule') continue;
 
-    const hasIconCode = rule.selectors?.some((selector) => selector === `.fa-${argv.icon}`);
+    const hasIconCode = rule.selectors?.includes(`.fa-${argv.icon}`);
 
     if (!hasIconCode) continue;
 
