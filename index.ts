@@ -80,23 +80,25 @@ const canvas = createCanvas(iconSize, iconSize);
 const context = canvas.getContext('2d');
 
 context.font = `${iconSize}px "Font Awesome"`;
-context.textAlign = 'center';
-context.textBaseline = 'middle';
+context.textAlign = 'left';
+context.textBaseline = 'alphabetic';
 
 const foundIconCodeString = foundIconCode.startsWith('\\') ? foundIconCode.slice(1) : foundIconCode;
 
-const iconMeasurements = context.measureText(foundIconCodeString);
+const metrics = context.measureText(foundIconCodeString);
 
-const width = iconMeasurements.actualBoundingBoxLeft + iconMeasurements.actualBoundingBoxRight;
-const height = iconMeasurements.actualBoundingBoxAscent + iconMeasurements.actualBoundingBoxDescent;
+const glyphWidth = metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight;
+const glyphHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
 
-const scale = iconSize / Math.max(width, height);
+const scale = iconSize / Math.max(glyphWidth, glyphHeight);
 
-context.scale(scale, scale);
+context.setTransform(scale, 0, 0, scale, 0, 0);
 
-const padding = iconSize / 2 / scale;
+const x = (iconSize / scale - glyphWidth) / 2 + metrics.actualBoundingBoxLeft;
 
-context.fillText(foundIconCodeString, padding, padding);
+const y = (iconSize / scale - glyphHeight) / 2 + metrics.actualBoundingBoxAscent;
+
+context.fillText(foundIconCodeString, x, y);
 
 const pngBuffer = canvas.toBuffer();
 

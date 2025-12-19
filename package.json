@@ -4,7 +4,6 @@
     "bin": {
         "export-font-awesome-icon": "./index.ts"
     },
-    "scripts": {},
     "prettier": "@eejit/prettier-config",
     "dependencies": {
         "canvas": "^3.2.0",
