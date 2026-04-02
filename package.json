@@ -6,16 +6,16 @@
     },
     "prettier": "@eejit/prettier-config",
     "dependencies": {
-        "canvas": "^3.2.1",
+        "canvas": "^3.2.3",
         "css": "^3.0.0",
         "yargs": "^18.0.0"
     },
     "devDependencies": {
-        "@eejit/eslint-config-typescript": "^17.0.1",
+        "@eejit/eslint-config-typescript": "^18.0.0",
         "@eejit/prettier-config": "^3.6.2",
         "@types/css": "^0.0.38",
         "@types/yargs": "^17.0.35",
         "bun-types": "latest",
-        "typescript": "^5.9.3"
+        "typescript": "^6.0.2"
     }
 }
