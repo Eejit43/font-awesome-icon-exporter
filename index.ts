@@ -54,13 +54,12 @@ for (const rule of parsedCss.stylesheet!.rules) {
     if (!hasIconCode) continue;
 
     const iconCode = rule.declarations?.find((declaration) => declaration.type === 'declaration' && declaration.property === '--fa') as
-        | Declaration
-        | undefined;
+        Declaration | undefined;
 
     if (iconCode) {
         foundIconCode = iconCode
             .value!.replaceAll(/^"|"$/g, '')
-            .replaceAll(/\\([\dA-Fa-f]{1,6})\s?/g, (fullMatch: string, hex: string) => String.fromCodePoint(Number.parseInt(hex, 16)));
+            .replaceAll(/\\([\dA-F]{1,6})\s?/gi, (fullMatch: string, hex: string) => String.fromCodePoint(Number.parseInt(hex, 16)));
 
         break;
     }

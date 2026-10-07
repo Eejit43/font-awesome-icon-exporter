@@ -8,11 +8,11 @@
     "dependencies": {
         "canvas": "^3.2.3",
         "css": "^3.0.0",
-        "yargs": "^18.0.0"
+        "yargs": "^18.2.0"
     },
     "devDependencies": {
-        "@eejit/eslint-config-typescript": "^18.0.0",
-        "@eejit/prettier-config": "^3.6.2",
+        "@eejit/eslint-config-typescript": "^20.5.0",
+        "@eejit/prettier-config": "^3.7.0",
         "@types/css": "^0.0.38",
         "@types/yargs": "^17.0.35",
         "typescript": "^6.0.2"
